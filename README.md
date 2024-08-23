@@ -6,8 +6,8 @@
 This project focuses on the use of wearable accelerometers for activity recognition. By leveraging data from multiple accelerometers placed on different parts of the body, we aim to accurately classify physical activities such as walking, ascending stairs, and descending stairs. The project employs advanced machine learning techniques, including Convolutional Neural Networks (CNN) and a combination of CNN with Gated Recurrent Unit (GRU) models, to enhance the accuracy of activity recognition.
 
 ### Team Members
-- **Amirhossein Rostami** - 2084299
-- **Abbas Zal** - 2072054
+- **Amirhossein Rostami** 
+- **Abbas Zal** 
 
 ## Problem and Approach
 
