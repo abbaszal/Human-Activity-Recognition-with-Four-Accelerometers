@@ -1,84 +1,152 @@
+# Activity Recognition with Four Accelerometers
 
-# Activity Recognition Using Accelerometer Data
-
-## Project Overview
-
-This project focuses on the use of wearable accelerometers for activity recognition. By leveraging data from multiple accelerometers placed on different parts of the body, we aim to accurately classify physical activities such as walking, ascending stairs, and descending stairs. The project employs advanced machine learning techniques, including Convolutional Neural Networks (CNN) and a combination of CNN with Gated Recurrent Unit (GRU) models, to enhance the accuracy of activity recognition.
-
-### Team Members
-- **Amirhossein Rostami** 
-- **Abbas Zal** 
-
-## Problem and Approach
-
-### Introduction
-
-Wearable accelerometers have become integral in health research due to their ability to provide precise, continuous measurements of physical activity. Our primary objective is to utilize accelerometer data to improve activity recognition through sophisticated modeling approaches.
-
-### Methods Used
-
-- **Convolutional Neural Networks (CNN)**
-- **Combination of CNN and GRU units**
-- **Data Preprocessing Techniques**: Baseline Wander Removal, Normalization, and Feature Extraction.
-
-## Data Preprocessing
-
-### Structure of Data
-
-The dataset consists of measurements from four accelerometers worn on the left wrist, left hip, left ankle, and right ankle. The columns in the dataset include:
-
-- **Activity**: Type of activity performed.
-- **Time (s)**: Time from device initiation in seconds.
-- **Gravitational Measurements**: 
-  - `lw_x, lw_y, lw_z`: Left wrist x, y, and z-axis.
-  - `lh_x, lh_y, lh_z`: Left hip x, y, and z-axis.
-  - `la_x, la_y, la_z`: Left ankle x, y, and z-axis.
-  - `ra_x, ra_y, ra_z`: Right ankle x, y, and z-axis.
-
-### Preprocessing Steps
-
-1. **Signal Selection and Combination**:
-   - Single signal selection or combination of all four signals.
-   - Window selection approach with specific window size and step size.
-
-2. **Feature Extraction**:
-   - Extraction of normal and DCT/FFT features.
-   - Normalization using Median Absolute Deviation (MAD).
-
-3. **Activity Detection**:
-   - Focus on three activities: walking, ascending stairs, and descending stairs.
-
-## Model Architectures
-
-### 1. CNN for Multivariate Time Series
-
-The CNN model is composed of multiple layers designed to extract features from the accelerometer data and classify physical activities. The model has the following parameters:
-
-- **Total parameters**: 1,440,131
-- **Trainable parameters**: 1,438,211
-- **Non-trainable parameters**: 1,920
-
-### 2. CNN and GRU Model
-
-The CNN-GRU model combines the strengths of CNN for feature extraction and GRU for sequential data processing, achieving better performance in activity recognition tasks. The model parameters are:
-
-- **Total parameters**: 232,131
-- **Trainable parameters**: 232,131
-- **Non-trainable parameters**: 0
-
-## Results
-
-### CNN Model Performance
-
-The CNN model was evaluated using different preprocessing methods, including single signal selection and combination of all four signals. The model's performance was assessed based on window size and step size parameters, with the following results:
-
-- **Metrics**: Recall, Precision, F1 Score.
+This repository contains the report **"Activity Recognition with Four Accelerometers"** by Amirhossein Rostami and Abbas Zal. The study leverages wearable accelerometer data to recognize physical activities through deep learning. Two primary models are evaluated: a pure Convolutional Neural Network (CNN) and a hybrid CNN with Gated Recurrent Units (CNN-GRU).
 
 
-### CNN and GRU Model Performance
 
-The CNN-GRU model was tested with various window and step sizes, producing strong results across all configurations.
 
-## Conclusion
+## Overview
 
-The project successfully demonstrated the effectiveness of accelerometer data in recognizing physical activities. Our results indicate that sensors placed on the ankles and hips provided the most reliable data, significantly outperforming wrist sensors. The combination of sophisticated data preprocessing techniques, deep neural networks, and ample input data contributed to the high performance of our models.
+In modern health research, wearable sensors enable continuous, objective tracking of physical activities. In this project, 32 healthy adults wore four accelerometers (left wrist, left hip, left ankle, and right ankle) while engaging in activities such as walking and stair climbing. The collected high-frequency data is preprocessed and segmented into windows before being fed into two deep learning models:
+
+- **CNN Model:** Extracts spatial features from the raw accelerometer data.
+- **CNN-GRU Model:** Enhances feature extraction by incorporating temporal dynamics through GRU layers.
+
+The main objective is to improve activity classification accuracy by exploring different data preprocessing strategies and sensor combinations.
+
+---
+
+## Repository Contents
+
+- **Rostami_Zal_Activity_Recognition_with_Four_Accelerometers.pdf**  
+  The complete report detailing methodology, experiments, and analysis.
+- ** Notebooks **  
+  Contains notebooks used to train models, and generate results.
+
+---
+
+## Project Description
+
+### Data and Preprocessing
+
+The dataset consists of raw accelerometer signals recorded at 100Hz. Key preprocessing steps include:
+
+- **Data Combination:**  
+  Merging CSV files from 32 participants to form a comprehensive dataset (≈2 million rows).
+
+- **Windowing:**  
+  Segmenting data into fixed-size windows (256, 512, or 1024 samples) with corresponding step sizes. Two preprocessing approaches are used:
+  - **Preprocessing-1:** Direct segmentation with noise reduction and normalization.
+  - **Preprocessing-2:** Windowing followed by the extraction of statistical and frequency-domain features (e.g., FFT and DCT).
+
+- **Noise Reduction & Normalization:**  
+  Removal of baseline wander via median filters and normalization using percentile-based methods or Median Absolute Deviation (MAD).
+
+### Model Architectures
+
+- **CNN Model:**  
+  Composed of several 1D convolutional layers (with increasing filter sizes), batch normalization, max pooling, and dropout, followed by fully connected layers ending with a softmax output layer for three activity classes.
+
+- **CNN-GRU Model:**  
+  Combines initial CNN layers for spatial feature extraction with one or two GRU layers (128 units each) to capture temporal dependencies. The architecture concludes with dense layers and a softmax output for classification.
+
+---
+
+## Detailed Results
+
+The evaluation of the models focused on key metrics: accuracy, precision, recall, and F1 score. Below are the summarized findings from multiple experimental setups.
+
+### CNN Model – Preprocessing-1 (Single Signal Selection)
+
+**Window Size 256 (Step Size 256):**
+- **Left Wrist:** Accuracy 87.4%, F1 Score ≈87.5%
+- **Left Hip:** Accuracy 97.6%, F1 Score ≈97.6%
+- **Left Ankle:** Accuracy 97.3%, F1 Score ≈97.3%
+- **Right Ankle:** Accuracy 99.0%, F1 Score ≈99.0%
+
+**Window Size 512 (Step Size 512):**
+- **Left Wrist:** Accuracy 85.6%
+- **Left Hip:** Accuracy 95.8%
+- **Left Ankle:** Accuracy 98.9%
+- **Right Ankle:** Accuracy 99.6%
+
+**Window Size 1024 (Step Size 256):**
+- **Left Wrist:** Accuracy 87.4%
+- **Left Hip:** Accuracy 98.5%
+- **Left Ankle:** Accuracy 99.6%
+- **Right Ankle:** Accuracy 99.6%
+
+*Observation:* When using individual sensor data, the models consistently performed best with hip and ankle sensors. The wrist sensor, while slightly lower, still provided robust performance.
+
+### CNN Model – Preprocessing-1 (Combined Sensor Data)
+
+- **Combined Data (Window Size 256):**  
+  Achieved a weighted average F1 score of **0.95**.
+  
+*Observation:* Combining data from all four sensors enhanced classification performance by leveraging complementary information from multiple sensor placements.
+
+### CNN Model – Preprocessing-2 (Feature Extraction Approach)
+
+**Window Size 256:** Accuracy 98%, Precision 95%, Recall 95%, F1 Score 95%  
+**Window Size 512:** Accuracy 99%, Precision 99%, Recall 97%, F1 Score 98%  
+**Window Size 1024:** Accuracy 98%, Precision 97%, Recall 91%, F1 Score 94%
+
+*Observation:* The second preprocessing approach (with feature extraction) yielded high performance, particularly at a window size of 512 samples, showing a slight trade-off between recall and precision at larger window sizes.
+
+### CNN-GRU Model Results
+
+**Performance across different window sizes and step sizes:**
+- **Window Size 256 (Step Size 256):**  
+  Accuracy, Precision, Recall, F1 Score all at **98%**.
+- **Window Size 512 (Step Size 512):**  
+  All metrics maintained at **98%**.
+- **Window Size 1024 (Step Size 256):**  
+  Accuracy 98%, Precision 99%, Recall 98%, F1 Score 98%
+
+*Observation:* The CNN-GRU model exhibited consistent performance across different settings, indicating the robustness of combining convolutional feature extraction with temporal sequence modeling.
+
+### Comparative Insights
+
+- **Sensor Placement:**  
+  Sensors on the hip and ankles deliver the most reliable signals, whereas wrist sensor data is slightly less effective.
+- **Multi-Sensor Fusion:**  
+  Integrating data from all sensor locations generally leads to improved accuracy and robustness.
+- **Model Robustness:**  
+  Both the CNN and CNN-GRU models outperform traditional methods (such as Classification Trees), with the CNN-GRU model offering a marginally more stable performance across various window sizes.
+
+For further details and additional performance tables, please refer to the full report.
+
+---
+
+## Future Work
+
+- **Sensor Placement Optimization:**  
+  Investigate optimal sensor configurations to further enhance classification accuracy.
+- **Expanding Sensor Modalities:**  
+  Explore the integration of additional sensor types to capture more complex or subtle activities.
+- **Enhanced Feature Engineering:**  
+  Delve into advanced feature extraction methods to improve model robustness.
+- **Real-World Deployment:**  
+  Validate the models in real-life settings beyond controlled experiments.
+
+---
+
+## References
+
+Key literature includes:
+- Studies on deep learning architectures (CNNs, GRUs) for time series and accelerometry data.
+- Research on signal processing techniques such as baseline removal and normalization.
+- Comparative analysis with traditional classification methods.
+
+For complete references, please consult the PDF report.
+
+---
+
+## Contact
+
+For questions or collaboration, please contact:
+- **Amirhossein Rostami:** [amirhossein.rostami@studenti.unipd.it](mailto:amirhossein.rostami@studenti.unipd.it)
+- **Abbas Zal:** [abbas.zal@studenti.unipd.it](mailto:abbas.zal@studenti.unipd.it)
+
+
+---
