@@ -20,7 +20,7 @@ The main objective is to improve activity classification accuracy by exploring d
 
 - **Rostami_Zal_Activity_Recognition_with_Four_Accelerometers.pdf**  
   The complete report detailing methodology, experiments, and analysis.
-- ** Notebooks **  
+- **Notebooks**  
   Contains notebooks used to train models, and generate results.
 
 ---
