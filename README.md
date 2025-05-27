@@ -1,6 +1,10 @@
 # Activity Recognition with Four Accelerometers
 
-This repository contains the report **"Activity Recognition with Four Accelerometers"** . The study leverages wearable accelerometer data to recognize physical activities through deep learning. Two primary models are evaluated: a pure Convolutional Neural Network (CNN) and a hybrid CNN with Gated Recurrent Units (CNN-GRU).
+This repository contains the report **"Activity Recognition with Four Accelerometers"** . 
+
+The study leverages wearable accelerometer data to recognize physical activities through deep learning. 
+
+Two primary models are evaluated: a pure Convolutional Neural Network (CNN) and a hybrid CNN with Gated Recurrent Units (CNN-GRU).
 
 
 
