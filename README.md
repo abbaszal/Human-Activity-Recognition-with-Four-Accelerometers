@@ -62,23 +62,21 @@ The evaluation of the models focused on key metrics: accuracy, precision, recall
 
 ### CNN Model – Preprocessing-1 (Single Signal Selection)
 
-**Window Size 256 (Step Size 256):**
-- **Left Wrist:** Accuracy 87.4%, F1 Score ≈87.5%
-- **Left Hip:** Accuracy 97.6%, F1 Score ≈97.6%
-- **Left Ankle:** Accuracy 97.3%, F1 Score ≈97.3%
-- **Right Ankle:** Accuracy 99.0%, F1 Score ≈99.0%
+| Window Size (Step Size) | Joint        | Accuracy (%) |
+|--------------------------|--------------|---------------|
+| **256 (256)**            | Left Wrist   | 87.4          |
+|                          | Left Hip     | 97.6          |
+|                          | Left Ankle   | 97.3          |
+|                          | Right Ankle  | 99.0          |
+| **512 (512)**            | Left Wrist   | 85.6          |
+|                          | Left Hip     | 95.8          |
+|                          | Left Ankle   | 98.9          |
+|                          | Right Ankle  | 99.6          |
+| **1024 (256)**           | Left Wrist   | 87.4          |
+|                          | Left Hip     | 98.5          |
+|                          | Left Ankle   | 99.6          |
+|                          | Right Ankle  | 99.6          |
 
-**Window Size 512 (Step Size 512):**
-- **Left Wrist:** Accuracy 85.6%
-- **Left Hip:** Accuracy 95.8%
-- **Left Ankle:** Accuracy 98.9%
-- **Right Ankle:** Accuracy 99.6%
-
-**Window Size 1024 (Step Size 256):**
-- **Left Wrist:** Accuracy 87.4%
-- **Left Hip:** Accuracy 98.5%
-- **Left Ankle:** Accuracy 99.6%
-- **Right Ankle:** Accuracy 99.6%
 
 *Observation:* When using individual sensor data, the models consistently performed best with hip and ankle sensors. The wrist sensor, while slightly lower, still provided robust performance.
 
