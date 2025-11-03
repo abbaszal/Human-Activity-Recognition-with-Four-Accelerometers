@@ -101,12 +101,13 @@ The evaluation of the models focused on key metrics: accuracy, precision, recall
 ### CNN-GRU Model Results
 
 **Performance across different window sizes and step sizes:**
-- **Window Size 256 (Step Size 256):**  
-  Accuracy, Precision, Recall, F1 Score all at **98%**.
-- **Window Size 512 (Step Size 512):**  
-  All metrics maintained at **98%**.
-- **Window Size 1024 (Step Size 256):**  
-  Accuracy 98%, Precision 99%, Recall 98%, F1 Score 98%
+
+| Window Size (Step Size) | Accuracy (%) | Precision (%) | Recall (%) | F1 Score (%) |
+|--------------------------|---------------|----------------|-------------|---------------|
+| **256 (256)**            | 98            | 98             | 98          | 98            |
+| **512 (512)**            | 98            | 98             | 98          | 98            |
+| **1024 (256)**           | 98            | 99             | 98          | 98            |
+
 
 *Observation:* The CNN-GRU model exhibited consistent performance across different settings, indicating the robustness of combining convolutional feature extraction with temporal sequence modeling.
 
