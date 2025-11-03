@@ -89,9 +89,12 @@ The evaluation of the models focused on key metrics: accuracy, precision, recall
 
 ### CNN Model – Preprocessing-2 (Feature Extraction Approach)
 
-**Window Size 256:** Accuracy 98%, Precision 95%, Recall 95%, F1 Score 95%  
-**Window Size 512:** Accuracy 99%, Precision 99%, Recall 97%, F1 Score 98%  
-**Window Size 1024:** Accuracy 98%, Precision 97%, Recall 91%, F1 Score 94%
+| Window Size | Accuracy (%) | Precision (%) | Recall (%) | F1 Score (%) |
+|--------------|---------------|----------------|-------------|---------------|
+| **256**      | 98            | 95             | 95          | 95            |
+| **512**      | 99            | 99             | 97          | 98            |
+| **1024**     | 98            | 97             | 91          | 94            |
+
 
 *Observation:* The second preprocessing approach (with feature extraction) yielded high performance, particularly at a window size of 512 samples, showing a slight trade-off between recall and precision at larger window sizes.
 
